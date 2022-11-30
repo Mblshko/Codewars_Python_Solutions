@@ -1,2 +1,2 @@
-# Codewars_Python_Solution
+# Codewars Python Solution
  My CodeWars solutions in Python.
