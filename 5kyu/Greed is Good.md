@@ -24,3 +24,32 @@ Example scoring
  2 4 4 5 4   450:  400 (for three 4s) + 50 (for the 5)
  ```
 In some languages, it is possible to mutate the input to the function. This is something that you should never do. If you mutate the input, you will not be able to pass all the tests.
+
+---
+### Solution
+
+```python
+def score(dice):
+    scores = 0
+    stack = []
+    for x in dice:
+        stack.append(x)
+        i = stack.count(x)
+        if x in [2, 3, 4, 6] and i == 3:
+            scores += int(str(x) + '0' * 2)
+            stack.clear()
+        if x in [1, 5] and 0 < i < 3:
+            if x == 1:
+                scores += 100
+            if x == 5:
+                scores += 50
+        if x in [1, 5] and i == 3:
+            stack.clear()
+            if x == 1:
+                scores += 1000 - 200
+            if x == 5:
+                scores += 500 - 100
+    return scores
+   ```
+   ---
+   [See on CodeWars.com](https://www.codewars.com/kata/5270d0d18625160ada0000e4)
